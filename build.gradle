@@ -1,0 +1,48 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlinVersion = '1.2.61'
+    ext.gradleVersion = '3.1.4'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+//Libraries version definition
+ext{
+    minSdkVersion = 15
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+
+    ankoVersion = '0.10.5'
+    supportLibraryVersion = '27.1.1'
+    constrainLayoutVersion = '1.1.2'
+    dagger2Version = '2.16'
+    eventBusVersion = '3.0.0'
+    calligraphyVersion = '2.3.0'
+    firebaseVersion = '16.0.3'
+    playServiceAuthVersion = '16.0.0'
+    junitVersion = '4.12'
+    supportRunnerVersion = '1.0.2'
+    espressoCoreVersion = '3.0.2'
+
+}

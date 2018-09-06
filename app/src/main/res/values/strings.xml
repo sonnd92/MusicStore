@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">cisuM</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Bảng điều khiển</string>
+    <string name="title_notifications">Thông báo</string>
+    <string name="loading">Đang tải...</string>
+    <string name="title_activity_login">Đăng nhập</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mật khẩu(không bắt buộc)</string>
+    <string name="action_sign_in">Đăng nhập</string>
+    <string name="action_sign_in_via_fb">Đăng nhập qua Facebook</string>
+    <string name="action_sign_in_via_google_plus">Đăng nhập qua Google+</string>
+    <string name="action_sign_in_short">Đăng nhập</string>
+    <string name="error_invalid_email">Địa chỉ email không hợp lệ</string>
+    <string name="error_invalid_password">Mật khẩu quá ngắn</string>
+    <string name="error_incorrect_password">Mật khẩu không hợp lệ</string>
+    <string name="error_field_required">Trường này không được phép để trống</string>
+    <string name="permission_rationale">"Yêu cầu đọc danh bạ cần được cấp phép cho chức năng tự động điền."
+    </string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Mở thanh điều hướng</string>
+    <string name="navigation_drawer_close">Đóng thanh điều hướng</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Cài đặt</string>
+    <string name="signing_in">Đang đăng nhập...</string>
+    <string name="do_not_have_any_account">Bạn chưa có tài khoản?</string>
+    <string name="register">Đăng ký</string>
+    <string name="title_activity_login2">Sign in</string>
+</resources>
