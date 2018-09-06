@@ -15,6 +15,7 @@ import javax.inject.Singleton
 @Component(modules = [
     MsAppModule::class,
     ClientStorageModule::class,
+    ValidationModule::class,
     PicassoModule::class,
     ActivityBindingModule::class,
     AndroidSupportInjectionModule::class])

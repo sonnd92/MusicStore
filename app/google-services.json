@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "115382656467",
+    "firebase_url": "https://cisum-e532c.firebaseio.com",
+    "project_id": "cisum-e532c",
+    "storage_bucket": "cisum-e532c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115382656467:android:d6dfe330e097dbb2",
+        "android_client_info": {
+          "package_name": "vn.musicstore.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115382656467-148bviv98452ni5cc61k5adgah8mvf00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUGcrJFBUNCyhACdQouJXpawVJPIO3YIk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

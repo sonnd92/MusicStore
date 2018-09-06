@@ -12,35 +12,31 @@ import vn.musicstore.app.R
 import vn.musicstore.app.extensions.getRelativeTop
 
 class InputForm(private val ctx: Context) {
-    private lateinit var fields: MutableList<Field>
+    private var fields: MutableList<Field> = mutableListOf()
+
     @IdRes
-    private var wrapperId:Int = 0
+    var wrapperId: Int = 0
 
-    private fun addFied(field: Field) = fields.add(field)
-    private fun setWrapper(@IdRes wrapperId: Int){
-        this.wrapperId = wrapperId
-    }
+    fun addField(field: Field) = fields.add(field)
 
-    protected fun isValid() :Boolean{
+    fun isValid(): Boolean {
         return try {
-            fields.forEach{
+            fields.forEach {
                 it.isValid()
                 clearError(it.getObserveEditText())
             }
             true
-        }catch (e: FieldValidateException){
+        } catch (e: FieldValidateException) {
             showMessage(e.getObserveEditText(), e.getErrorMessage())
             false
         }
     }
 
     protected fun showMessage(observeEdt: EditText, errorMessage: String) {
-        val rootView:View = observeEdt.rootView.findViewById(wrapperId)
-        (ctx as AppCompatActivity).runOnUiThread {
-            if (rootView is ScrollView) {
-                rootView
-                    .smoothScrollTo(0,observeEdt.getRelativeTop() - observeEdt.height - ctx.getResources().getDimensionPixelOffset(R.dimen.input_common_height))
-            }
+        val rootView: View = observeEdt.rootView.findViewById(wrapperId)
+        if (rootView is ScrollView) {
+            rootView
+                    .smoothScrollTo(0, observeEdt.getRelativeTop() - observeEdt.height - ctx.getResources().getDimensionPixelOffset(R.dimen.input_common_height))
         }
 
         observeEdt.requestFocus()

@@ -55,6 +55,7 @@ dependencies {
 
     implementation "uk.co.chrisjenx:calligraphy:$rootProject.ext.calligraphyVersion"
     //Firebase
+    implementation "com.google.firebase:firebase-core:$rootProject.ext.firebaseVersion"
     implementation "com.google.firebase:firebase-auth:$rootProject.ext.firebaseVersion"
     implementation "com.google.android.gms:play-services-auth:$rootProject.ext.playServiceAuthVersion"
 
@@ -66,3 +67,5 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoCoreVersion"
 //    implementation "org.jetbrains.anko:anko-commons:$anko_version"
 }
+
+apply plugin: 'com.google.gms.google-services'

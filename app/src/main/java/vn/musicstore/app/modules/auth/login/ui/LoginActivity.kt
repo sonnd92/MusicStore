@@ -28,6 +28,10 @@ import vn.musicstore.app.MsApplication
 import vn.musicstore.app.data.remote.service.UserService
 import vn.musicstore.app.extensions.hide
 import vn.musicstore.app.extensions.show
+import vn.musicstore.app.utility.validation.Field
+import vn.musicstore.app.utility.validation.InputForm
+import vn.musicstore.app.utility.validation.validator.IsEmail
+import vn.musicstore.app.utility.validation.validator.IsRequired
 import javax.inject.Inject
 
 /**
@@ -37,10 +41,14 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
 
     private val TAG = "LoginActivity"
 
+    @Inject
+    lateinit var mInputForm: InputForm
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         // Set up the login form.
+        initValidation()
         v_password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
             if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
                 attemptLogin()
@@ -52,12 +60,26 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
         v_email_sign_in_button.setOnClickListener { attemptLogin() }
     }
 
+    private fun initValidation() {
+        with(mInputForm) {
+            wrapperId = R.id.login_form
+            addField(Field.Builder(v_email)
+                .validate(IsRequired("Vui lòng nhập địa chỉ email"))
+                .validate(IsEmail("Vui lòng nhập đúng email"))
+                .build())
+        }
+    }
+
     /**
      * Attempts to sign in the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
     private fun attemptLogin() {
+        if (!mInputForm.isValid()) {
+            return
+        }
+
         showProgress(true)
         v_email_sign_in_button.text = getString(R.string.signing_in)
         mPresenter.login(v_email.text.toString(), v_password.text.toString())
