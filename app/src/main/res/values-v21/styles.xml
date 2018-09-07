@@ -3,12 +3,13 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.NoActionBar.TransparentStatusBar">
-        <item name="android:windowBackground">@drawable/app_background</item>
+        <item name="android:windowBackground">@color/blackOverlay</item>
         <item name="android:fontFamily">@font/font_averta</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="MsButtonLarge">
@@ -26,6 +27,7 @@
 
     <style name="MsButtonLarge.Default" parent="MsButtonLarge">
         <item name="android:background">@drawable/selector_default_button</item>
+        <item name="android:textColor">@color/colorBlack</item>
     </style>
 
     <style name="MsButtonLarge.Info" parent="MsButtonLarge">
@@ -34,5 +36,14 @@
 
     <style name="MsButtonLarge.Primary" parent="MsButtonLarge">
         <item name="android:background">@drawable/selector_primary_button</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="AppTheme.NoActionBar.TransparentStatusBar">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 </resources>

@@ -3,10 +3,13 @@
     <color name="colorPrimary">#919496</color>
     <color name="colorPrimaryDark">#68686e</color>
     <color name="colorPrimaryDeepDark">#464646</color>
+    <color name="colorBlackBackground">#0e0e0e</color>
     <color name="colorBlack">#000000</color>
     <color name="colorAccent">#ffffff</color>
     <color name="colorGray">#cccccc</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorCommonText">#ffffff</color>
+    <color name="colorCommonTextHint">#c8ffffff</color>
     <color name="colorMsGreenLight">#1ed760</color>
     <color name="colorMsGreen">#1db954</color>
     <color name="colorMsGreenDark">#168e40</color>
@@ -18,4 +21,6 @@
     <color name="colorMsDangerLight">#e94739</color>
     <color name="colorMsDanger">#db4437</color>
     <color name="colorMsDangerDark">#a33329</color>
+
+    <color name="blackOverlay">#0e0e0e</color>
 </resources>

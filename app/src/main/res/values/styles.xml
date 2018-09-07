@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorCommonText</item>
+        <item name="android:textColorHint">@color/colorCommonTextHint</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -14,7 +16,7 @@
     </style>
 
     <style name="AppTheme.NoActionBar.TransparentStatusBar">
-        <item name="android:windowBackground">@drawable/app_background</item>
+        <item name="android:windowBackground">@color/blackOverlay</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -34,6 +36,7 @@
 
     <style name="MsButtonLarge.Default" parent="MsButtonLarge">
         <item name="android:background">@drawable/selector_default_button</item>
+        <item name="android:textColor">@color/colorBlack</item>
     </style>
 
     <style name="MsButtonLarge.Info" parent="MsButtonLarge">
@@ -46,5 +49,16 @@
 
     <style name="MsButtonLarge.Danger" parent="MsButtonLarge">
         <item name="android:background">@drawable/selector_danger_button</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="AppTheme.NoActionBar.TransparentStatusBar">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:windowActionBar">false</item>
     </style>
 </resources>

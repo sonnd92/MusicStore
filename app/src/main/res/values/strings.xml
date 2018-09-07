@@ -30,4 +30,6 @@
     <string name="do_not_have_any_account">Bạn chưa có tài khoản?</string>
     <string name="register">Đăng ký</string>
     <string name="title_activity_login2">Sign in</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

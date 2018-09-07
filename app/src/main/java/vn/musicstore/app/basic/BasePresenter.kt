@@ -6,7 +6,7 @@ import vn.musicstore.app.di.component.PresenterComponent
 import vn.musicstore.app.di.module.MsAppModule
 import vn.musicstore.app.modules.auth.login.LoginPresenter
 
-abstract class BaseUIPresenter<out V : IBaseView>(protected val view: V) {
+abstract class BasePresenter<out V : IBaseView>(protected val view: V) {
 
     private val injector: PresenterComponent = DaggerPresenterComponent
             .builder()

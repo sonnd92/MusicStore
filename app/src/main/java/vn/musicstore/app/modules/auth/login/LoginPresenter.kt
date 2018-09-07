@@ -1,24 +1,14 @@
 package vn.musicstore.app.modules.auth.login
 
-import android.os.Handler
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.ActionCodeSettings
-import vn.musicstore.app.basic.BaseUIPresenter
-import vn.musicstore.app.extensions.toast
+import vn.musicstore.app.basic.BasePresenter
 import com.google.firebase.auth.FirebaseAuth
 import vn.musicstore.app.data.remote.service.UserService
 import javax.inject.Inject
-import com.google.android.gms.tasks.Task
-import android.support.annotation.NonNull
 import android.util.Log
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.internal.FirebaseAppHelper.getUid
-import com.google.firebase.auth.FirebaseUser
 
 
-
-
-class LoginPresenter(view: ILoginView) : BaseUIPresenter<ILoginView>(view) {
+class LoginPresenter(view: ILoginView) : BasePresenter<ILoginView>(view) {
 
     private val TAG  = "LoginPresenter"
 
@@ -36,7 +26,7 @@ class LoginPresenter(view: ILoginView) : BaseUIPresenter<ILoginView>(view) {
     fun login(email: String, password: String) {
 
         //initialize firebase authentication
-        val url = "https://2d2c0f20.ngrok.io/api/authentication/verify?uid=" + email
+        val url = "https://2d2c0f20.ngrok.io/api/authentication/verify?uid=$email"
         val actionCodeSettings = ActionCodeSettings.newBuilder()
                 .setUrl(url)
                 .setHandleCodeInApp(true)

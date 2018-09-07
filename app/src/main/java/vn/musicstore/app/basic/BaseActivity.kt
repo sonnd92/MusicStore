@@ -12,7 +12,7 @@ import vn.musicstore.app.R
 import vn.musicstore.app.extensions.hide
 import vn.musicstore.app.extensions.show
 
-abstract class BaseActivity<P : BaseUIPresenter<IBaseView>> : DaggerAppCompatActivity(),
+abstract class BaseActivity<P : BasePresenter<IBaseView>> : DaggerAppCompatActivity(),
         IBaseView,
         IBaseUIBehavior,
         IBaseUISetup {

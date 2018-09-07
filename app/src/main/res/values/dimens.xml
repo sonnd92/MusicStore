@@ -12,5 +12,6 @@
     <dimen name="large_button_elevation_height">5dp</dimen>
     <dimen name="default_button_elevation_height">4dp</dimen>
     <dimen name="small_button_elevation_height">3dp</dimen>
+    <dimen name="splash_screen_logo_width">130dp</dimen>
 
 </resources>
