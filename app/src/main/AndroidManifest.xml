@@ -15,42 +15,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
-
         <activity
             android:name=".modules.splash.ui.SplashActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_splash"
             android:theme="@style/SplashScreenTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".modules.auth.login.ui.LoginActivity"
-            android:label="@string/title_activity_login">
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="example.page.link"
-                    android:scheme="http" />
-                <data
-                    android:host="example.page.link"
-                    android:scheme="https" />
-            </intent-filter>
-        </activity>
+            android:label="@string/title_activity_login"></activity>
         <!-- <activity -->
         <!-- android:name=".modules.auth.login.ui.LoginActivity" -->
         <!-- android:label="@string/title_activity_login"></activity> -->
         <activity
-            android:name=".modules.home.HomeActivity"
+            android:name=".modules.home.ui.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".modules.auth.login.ui.ConfirmSignInEmailActivity" />
+        <activity android:name=".modules.auth.login.ui.AuthenticateActivity">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cisum.page.link"
+                    android:scheme="http" />
+                <data
+                    android:host="cisum.page.link"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

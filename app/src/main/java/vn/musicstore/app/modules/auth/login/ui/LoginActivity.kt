@@ -1,33 +1,19 @@
 package vn.musicstore.app.modules.auth.login.ui
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.annotation.TargetApi
-import android.app.LoaderManager.LoaderCallbacks
-import android.content.CursorLoader
-import android.content.Loader
-import android.content.pm.PackageManager
-import android.database.Cursor
-import android.net.Uri
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.ArrayAdapter
 import android.widget.TextView
-import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_login.*
 import vn.musicstore.app.R
 import vn.musicstore.app.basic.BaseActivity
+import vn.musicstore.app.extensions.hide
+import vn.musicstore.app.extensions.show
 import vn.musicstore.app.extensions.toast
 import vn.musicstore.app.modules.auth.login.ILoginView
 import vn.musicstore.app.modules.auth.login.LoginPresenter
-import java.util.*
-import kotlinx.android.synthetic.main.activity_login.*
-import vn.musicstore.app.MsApplication
-import vn.musicstore.app.data.remote.service.UserService
-import vn.musicstore.app.extensions.hide
-import vn.musicstore.app.extensions.show
 import vn.musicstore.app.utility.validation.Field
 import vn.musicstore.app.utility.validation.InputForm
 import vn.musicstore.app.utility.validation.validator.IsEmail
@@ -81,14 +67,23 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
         }
 
         showProgress(true)
-        v_email_sign_in_button.text = getString(R.string.signing_in)
         mPresenter.login(v_email.text.toString(), v_password.text.toString())
+    }
+
+    override fun onEmailConfirmationSent(successfully: Boolean) {
+        showProgress(false)
+
+        if (successfully) {
+            val emailConfirmationIntent = Intent(this, ConfirmSignInEmailActivity::class.java)
+            startActivity(emailConfirmationIntent)
+        }else{
+            toast("Xin lỗi, chúng tôi không thể gửi email xác minh đến địa chỉ mà bạn cung cấp. Vui lòng thủ lại sau")
+        }
     }
 
     override fun onLoginFailure(errorMessage:String) {
         toast(errorMessage)
         showProgress(false)
-        v_email_sign_in_button.text = getString(R.string.action_sign_in)
     }
 
     override fun onLogged() {
@@ -108,11 +103,18 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
             login_progress.hide(shortAnimTime)
         }
 
+        v_email_sign_in_button.text = getString(if(show) R.string.signing_in else R.string.action_sign_in)
+
         v_email.isEnabled = !show
         v_password.isEnabled = !show
         v_email_sign_in_button.isEnabled = !show
         v_fb_sign_in_button.isEnabled = !show
         v_google_sign_in_button.isEnabled = !show
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.onViewDestroyed()
     }
 
     override fun initiatePresenter(): LoginPresenter  = LoginPresenter(this)

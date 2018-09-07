@@ -45,6 +45,7 @@ dependencies {
     //Dagger
     implementation "com.google.dagger:dagger:$rootProject.ext.dagger2Version"
     implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     kapt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2Version"
     implementation "com.google.dagger:dagger-android:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"

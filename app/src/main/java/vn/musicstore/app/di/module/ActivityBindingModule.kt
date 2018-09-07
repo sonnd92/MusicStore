@@ -2,8 +2,9 @@ package vn.musicstore.app.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import vn.musicstore.app.modules.auth.login.ui.AuthenticateActivity
 import vn.musicstore.app.modules.auth.login.ui.LoginActivity
-import vn.musicstore.app.modules.home.HomeActivity
+import vn.musicstore.app.modules.home.ui.HomeActivity
 import vn.musicstore.app.modules.splash.ui.SplashActivity
 
 @Module
@@ -18,4 +19,7 @@ ActivityBindingModule {
 
     @ContributesAndroidInjector()
     abstract fun homeActivity(): HomeActivity
+
+    @ContributesAndroidInjector()
+    abstract fun confirmSignInCallbackActivity(): AuthenticateActivity
 }

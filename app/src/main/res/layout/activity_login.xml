@@ -14,10 +14,10 @@
     <!-- Login progress -->
     <ScrollView
         android:id="@+id/login_form"
-        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -29,83 +29,85 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:padding="10dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
+                android:padding="10dp"
                 android:text="@string/app_name"
                 android:textColor="@color/colorWhite"
                 android:textSize="50sp"
                 android:textStyle="bold"
-                android:layout_gravity="center_horizontal"/>
+                android:visibility="gone" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/v_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+            <AutoCompleteTextView
+                android:id="@+id/v_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/colorCommonText" />
 
-                <EditText
-                    android:id="@+id/v_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+            <EditText
+                android:id="@+id/v_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/colorCommonText" />
 
             <Button
                 android:id="@+id/v_email_sign_in_button"
                 style="@style/MsButtonLarge.Default"
-                android:layout_marginTop="16dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/v_fb_sign_in_button"
                 style="@style/MsButtonLarge"
-                android:background="@drawable/selector_login_via_fb_button"
-                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:textSize="16sp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/selector_login_via_fb_button"
                 android:text="@string/action_sign_in_via_fb"
                 android:textColor="@color/colorWhite"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/v_google_sign_in_button"
                 style="@style/MsButtonLarge.Danger"
-                android:layout_marginTop="16dp"
-                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in_via_google_plus"
                 android:textColor="@color/colorWhite"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:layout_marginTop="16dp"
                 android:gravity="center_horizontal"
                 android:text="@string/do_not_have_any_account"
                 android:textColor="@color/colorWhite"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/v_register_button"
                 style="@style/MsButtonLarge.Primary"
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
                 android:text="@string/register"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold" />

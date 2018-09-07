@@ -11,6 +11,7 @@ class UserSaved(sharePreference: AppSharePreference) {
     private val KEY_AVATAR = "avatar"
     private val KEY_TYPE = "type"
     private val KEY_EMAIL = "email"
+    private val KEY_UNCONFIRMED_EMAIL = "unconfirmedEmail"
     private val KEY_PHONE = "phone"
     private val KEY_USERNAME = "userName"
     private val KEY_ADDRESS = "userAddress"
@@ -35,6 +36,9 @@ class UserSaved(sharePreference: AppSharePreference) {
 
     fun setTypeId(typeId: Int) = sharedPref.set(KEY_TYPE, typeId)
     fun getTypeId() = sharedPref.getInt(KEY_TYPE)
+
+    fun setUnconfirmedEmail(unconfirmedEmail: String) = sharedPref.set(KEY_UNCONFIRMED_EMAIL, unconfirmedEmail)
+    fun getUnconfirmedEmail() = sharedPref.getString(KEY_UNCONFIRMED_EMAIL)
 
     fun setEmail(email: String) = sharedPref.set(KEY_EMAIL, email)
     fun getEmail() = sharedPref.getString(KEY_EMAIL)

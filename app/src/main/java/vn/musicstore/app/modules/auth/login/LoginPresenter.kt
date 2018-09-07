@@ -6,21 +6,23 @@ import com.google.firebase.auth.FirebaseAuth
 import vn.musicstore.app.data.remote.service.UserService
 import javax.inject.Inject
 import android.util.Log
+import vn.musicstore.app.prefs.UserSaved
 
 
 class LoginPresenter(view: ILoginView) : BasePresenter<ILoginView>(view) {
 
-    private val TAG  = "LoginPresenter"
+    private val TAG = "LoginPresenter"
 
     @Inject
     lateinit var userService: UserService
 
+    @Inject
+    lateinit var userSaved: UserSaved
+
     override fun onViewCreated() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onViewDestroyed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     fun login(email: String, password: String) {
@@ -37,8 +39,9 @@ class LoginPresenter(view: ILoginView) : BasePresenter<ILoginView>(view) {
         val auth = FirebaseAuth.getInstance()
         auth.sendSignInLinkToEmail(email, actionCodeSettings)
                 .addOnCompleteListener { task ->
+                    view.onEmailConfirmationSent(task.isSuccessful)
                     if (task.isSuccessful) {
-                        Log.d(TAG, "Email sent.")
+                        userSaved.setUnconfirmedEmail(email)
                     }
                 }
     }

@@ -5,5 +5,7 @@ import vn.musicstore.app.basic.IBaseView
 
 interface ILoginView : IBaseView, IBaseUIBehavior {
     fun onLogged()
-    fun onLoginFailure(errorMessage:String)
+    fun onLoginFailure(errorMessage: String)
+
+    fun onEmailConfirmationSent(successfully: Boolean)
 }

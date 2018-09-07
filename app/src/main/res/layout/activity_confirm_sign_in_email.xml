@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    tools:context=".modules.auth.login.ui.ConfirmSignInEmailActivity">
+
+    <TextView
+        android:id="@+id/v_page_header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center_horizontal"
+        android:text="Kiểm tra email của bạn"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_email_light" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chúng tôi đã gửi cho bạn một email kèm vói hướng dẫn để kích hoạt tài khoản của bạn. Vui lòng kiểm tra email của bạn"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nếu bạn chưa nhận được email. Hãy kiểm tra lại thư mục spam hoặc thử lại."/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/v_btn_open_email_app"
+        style="@style/MsButtonLarge.Default"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Mở ứng dụng thư" />
+</LinearLayout>

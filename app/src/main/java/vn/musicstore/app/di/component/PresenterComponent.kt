@@ -7,6 +7,7 @@ import vn.musicstore.app.di.module.ClientStorageModule
 import vn.musicstore.app.di.module.MsAppModule
 import vn.musicstore.app.di.module.NetworkModule
 import vn.musicstore.app.di.module.ServerServiceModule
+import vn.musicstore.app.modules.auth.login.AuthenticatePresenter
 import vn.musicstore.app.modules.auth.login.LoginPresenter
 import javax.inject.Singleton
 
@@ -19,6 +20,7 @@ import javax.inject.Singleton
 interface PresenterComponent{
 
     fun inject(presenter: LoginPresenter)
+    fun inject(presenter: AuthenticatePresenter)
 
     @Component.Builder
     interface Builder{
