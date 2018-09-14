@@ -23,14 +23,20 @@ class AuthenticatePresenter(view : IAuthenticateView) : BasePresenter<IAuthentic
         val auth = FirebaseAuth.getInstance()
         // Confirm the link is a sign-in with email link.
         if (auth.isSignInWithEmailLink(emailLink)) {
-            // Retrieve this from wherever you stored it
             val unconfirmedEmail = userSaved.getUnconfirmedEmail()
 
             // The client SDK will parse the code from the link for you.
             auth.signInWithEmailLink(unconfirmedEmail, emailLink)
                     .addOnCompleteListener { task ->
                         view.onAuthenticated(task.isSuccessful)
+                        if (task.isSuccessful) {
+                            userSaved.setIsLoggedIn(true)
+                            userSaved.setFirebaseEmailLink(emailLink)
+                            userSaved.setEmail(unconfirmedEmail)
+                        }
                     }
+        }else{
+            view.onAuthenticated(false)
         }
     }
 }

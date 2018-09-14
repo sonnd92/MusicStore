@@ -17,6 +17,7 @@ class UserSaved(sharePreference: AppSharePreference) {
     private val KEY_ADDRESS = "userAddress"
     private val KEY_ADDRESS_X_POINT = "userAddressXPoint"
     private val KEY_ADDRESS_Y_POINT = "userAddressYPoint"
+    private val KEY_FIREBASE_EMAIL_LINK = "firebaseEmailLink"
     private val KEY_TOKEN = "token"
 
     fun setIsLoggedIn(isLogged: Boolean) = sharedPref.set(KEY_IS_LOGIN, isLogged)
@@ -60,6 +61,9 @@ class UserSaved(sharePreference: AppSharePreference) {
 
     fun setTokenKey(token: String) = sharedPref.set(KEY_TOKEN, token)
     fun getTokenKey() = sharedPref.getString(KEY_TOKEN)
+
+    fun setFirebaseEmailLink(token: String) = sharedPref.set(KEY_FIREBASE_EMAIL_LINK, token)
+    fun getFirebaseEmailLink() = sharedPref.getString(KEY_FIREBASE_EMAIL_LINK)
 
     fun clear() = sharedPref.removeAll()
 }

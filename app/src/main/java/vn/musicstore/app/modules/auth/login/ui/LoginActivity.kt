@@ -4,16 +4,22 @@ import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.common.api.ApiException
 import kotlinx.android.synthetic.main.activity_login.*
 import vn.musicstore.app.R
 import vn.musicstore.app.basic.BaseActivity
 import vn.musicstore.app.extensions.hide
+import vn.musicstore.app.extensions.longToast
 import vn.musicstore.app.extensions.show
 import vn.musicstore.app.extensions.toast
 import vn.musicstore.app.modules.auth.login.ILoginView
 import vn.musicstore.app.modules.auth.login.LoginPresenter
+import vn.musicstore.app.modules.home.ui.HomeActivity
 import vn.musicstore.app.utility.validation.Field
 import vn.musicstore.app.utility.validation.InputForm
 import vn.musicstore.app.utility.validation.validator.IsEmail
@@ -24,6 +30,15 @@ import javax.inject.Inject
  * A login screen that offers login via email/password.
  */
 class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
+    private val RC_SIGN_IN = 1929
+    override fun onLoginViaGoogle() {
+//            var signInIntent = mGoogleSignInClient.getSignInIntent();
+//            startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    override fun onLoginViaFacebook() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private val TAG = "LoginActivity"
 
@@ -67,17 +82,21 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
         }
 
         showProgress(true)
-        mPresenter.login(v_email.text.toString(), v_password.text.toString())
+        if (v_password.text.isNullOrEmpty()) {
+            mPresenter.loginEmailLinkBase(v_email.text.toString())
+        }else{
+            mPresenter.loginEmailPasswordBase(v_email.text.toString(), v_password.text.toString())
+        }
     }
 
-    override fun onEmailConfirmationSent(successfully: Boolean) {
+    override fun onLoginByEmail(successfully: Boolean) {
         showProgress(false)
 
         if (successfully) {
             val emailConfirmationIntent = Intent(this, ConfirmSignInEmailActivity::class.java)
             startActivity(emailConfirmationIntent)
         }else{
-            toast("Xin lỗi, chúng tôi không thể gửi email xác minh đến địa chỉ mà bạn cung cấp. Vui lòng thủ lại sau")
+            toast("Xin lỗi, chúng tôi không thể gửi email xác minh đến địa chỉ mà bạn cung cấp. Vui lòng thử lại sau")
         }
     }
 
@@ -87,7 +106,11 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
     }
 
     override fun onLogged() {
-        toast("$TAG: Logged in")
+        val homeIntent = Intent(this, HomeActivity::class.java)
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(homeIntent)
+        longToast("Đăng nhập thành công, chào mừng bạn quay trờ lại với Cisum")
     }
 
     /**
@@ -98,9 +121,9 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
         val shortAnimTime = resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
         // simply show and hide the relevant UI components.
         if (show) {
-            login_progress.show(shortAnimTime)
+            login_progress.visibility = View.VISIBLE
         } else {
-            login_progress.hide(shortAnimTime)
+            login_progress.visibility = View.INVISIBLE
         }
 
         v_email_sign_in_button.text = getString(if(show) R.string.signing_in else R.string.action_sign_in)
@@ -117,5 +140,23 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
         mPresenter.onViewDestroyed()
     }
 
+
+    override fun onActivityResult(requestCode:Int, resultCode:Int, data:Intent) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            var task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                var account = task.getResult(ApiException::class.java)
+//                firebaseAuthWithGoogle(account);
+            } catch (e:ApiException) {
+                // Google Sign In failed, update UI appropriately
+//                Log.w(TAG, "Google sign in failed", e);
+                // ...
+            }
+        }
+    }
     override fun initiatePresenter(): LoginPresenter  = LoginPresenter(this)
 }

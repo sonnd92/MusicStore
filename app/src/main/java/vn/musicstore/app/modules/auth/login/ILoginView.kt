@@ -7,5 +7,9 @@ interface ILoginView : IBaseView, IBaseUIBehavior {
     fun onLogged()
     fun onLoginFailure(errorMessage: String)
 
-    fun onEmailConfirmationSent(successfully: Boolean)
+    fun onLoginByEmail(successfully: Boolean)
+
+    fun onLoginViaGoogle()
+
+    fun onLoginViaFacebook()
 }
